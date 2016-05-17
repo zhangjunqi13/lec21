@@ -245,7 +245,7 @@ class fs:
 
         inum = self.nameToInum[tfile]
 
-    # 2013011393 & 2013011408
+    # 2013011436 & 2013011431
         # IF inode.refcnt ==1, THEN free data blocks first, then free inode, ELSE dec indoe.refcnt
         inode = self.inodes[inum]
         if inode.refCnt == 1:
@@ -267,7 +267,7 @@ class fs:
         return 0
 
     def createLink(self, target, newfile, parent):
-    # 2013011393 & 2013011408
+    # 2013011436 & 2013011431
         # find info about parent
         parent_inode = self.inodes[self.nameToInum[parent]]
         parent_block = self.data[parent_inode.addr]
@@ -288,7 +288,7 @@ class fs:
     # DONE
         return tinum
 
-    # 2013011393 & 2013011408
+    # 2013011436 & 2013011431
     def createSoftLink(self, target, newfile, parent, fullName):
         if self.data[self.inodes[self.nameToInum[parent]].addr].getFreeEntries() == 0:
             return -1
@@ -300,7 +300,7 @@ class fs:
     # DONE
 
     def createFile(self, parent, newfile, ftype):
-    # 2013011393 & 2013011408
+    # 2013011436 & 2013011431
         # find info about parent
         parent_inum = self.nameToInum[parent]
         parent_inode = self.inodes[parent_inum]
@@ -338,7 +338,7 @@ class fs:
         curSize = self.inodes[inum].getSize()
         dprint('writeFile: inum:%d cursize:%d refcnt:%d' % (inum, curSize, self.inodes[inum].getRefCnt()))
 
-    # 2013011393 & 2013011408
+    # 2013011436 & 2013011431
         # file is full?
         if curSize == 1:
             return -1
