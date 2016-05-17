@@ -245,7 +245,6 @@ class fs:
 
         inum = self.nameToInum[tfile]
 
-    # 2013011404
         # IF inode.refcnt ==1, THEN free data blocks first, then free inode, ELSE dec indoe.refcnt
         # remove from parent directory: delete from parent inum, delete from parent addr
     # DONE
@@ -270,7 +269,7 @@ class fs:
         return 0
 
     def createLink(self, target, newfile, parent):
-    # 2013011404
+
         # find info about parent
         # is there room in the parent directory?
         # if the newfile was already in parent dir?
@@ -287,7 +286,7 @@ class fs:
         return t_inum
 
     def createFile(self, parent, newfile, ftype):
-    # 2013011404
+
         # find info about parent
         # is there room in the parent directory?
         # have to make sure file name is unique
@@ -320,7 +319,6 @@ class fs:
         curSize = self.inodes[inum].getSize()
         dprint('writeFile: inum:%d cursize:%d refcnt:%d' % (inum, curSize, self.inodes[inum].getRefCnt()))
 
-    # 2013011404
         # file is full?
         # no data blocks left
         # write file data
